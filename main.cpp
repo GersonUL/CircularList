@@ -23,15 +23,14 @@ int main(int argc, char** argv) {
     myList.insertIntoHead('a');
     myList.insertIntoHead('b');
     myList.insertIntoHead('c');
-    myList.insertIntoTail('d');
-    printf("lista original\n\n");
+    myList.insertIntoTail('z');
+    printf("lista original\n");
     myList.printList();
+    //myList.updateList('c','X');
+    myList.deleteToList('a');
+    printf("\n");
+    myList.printList();
+    //printf("c% ", myList.headNode->nextPtr->data);
     
-    myList.updateList('d','z');
-    printf("lista actualizada\n\n");
-    myList.printList();
-    myList.deleteToList('c');
-    printf("lista despues de eliminar\n\n");
-    myList.printList();
     return 0;
 }

@@ -30,15 +30,18 @@ void CircularList::insertIntoHead(char value){
     newPtr->nextPtr=NULL;
    if(tempPtr==NULL){
         headNode=newPtr;
-        tailNode=headNode;        
+        tailNode=newPtr;
+        headNode->nextPtr=tailNode;
+        tailNode->nextPtr=headNode;       
     }
     else{ 
-       newPtr->nextPtr=headNode;
-       newPtr->prevPtr=tailNode;
-       headNode->prevPtr=newPtr;
-       tailNode->nextPtr=newPtr;
-       headNode=newPtr;         
-    }
+       tempPtr=headNode;
+       headNode=newPtr;
+       headNode->nextPtr=tempPtr;
+       tempPtr->prevPtr=headNode;       
+       tailNode->nextPtr=headNode;
+       headNode->prevPtr=tailNode;
+    } 
 }    
 
 void CircularList::insertIntoTail(char value){
@@ -70,7 +73,7 @@ void CircularList::updateList(char value, char newValue){
         previousPtr=tempPtr;
         tempPtr = tempPtr->nextPtr;
     }
-    (tempPtr->prevPtr)->nextPtr=newPtr;
+    (tempPtr->prevPtr)->nextPtr=newPtr; 
     newPtr->nextPtr=tempPtr->nextPtr;
     
 }//upDateList
@@ -126,18 +129,11 @@ void CircularList::deleteToList(char value){
 }//deleteToList
 
 void CircularList::printList(){
-    NODEPTR tempNode = headNode->nextPtr;
-    if(headNode != NULL){        
-//        printf("%c--> ", headNode->data);        
-            if(tempNode != NULL){
-                printf("%c--> ", headNode->data); 
-                while(tempNode != headNode){
-                    printf("%c--> ", tempNode->data);
-                    tempNode = tempNode->nextPtr;
-                }//while(tempNode != NULL)
-                printf("NULL\n\n");
-            }//if(tempNode != NULL)
-    }else{
-        printf("The list is empty.\n\n");
-    }//else
+    NODEPTR tempNode = headNode;
+     printf("%c--> ", tempNode->data);
+     tempNode=tempNode->nextPtr;
+     while(tempNode!=headNode){
+          printf("%c--> ", tempNode->data);
+         tempNode=tempNode->nextPtr;
+     }
 }

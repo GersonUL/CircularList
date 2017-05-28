@@ -16,6 +16,15 @@
 
 class CircularList {
 public:
+    struct node{
+        char data;
+        struct node *nextPtr,*prevPtr;
+    };
+    typedef struct node NODE;
+    typedef NODE *NODEPTR;
+
+    NODEPTR headNode, tailNode;
+
     CircularList();
     CircularList(const CircularList& orig);
     virtual ~CircularList();
@@ -27,13 +36,6 @@ void deleteToList(char value);
 void updateList(char value,char newValue);
 void printList();
 private:
-    struct node{
-    char data;
-    struct node *nextPtr,*prevPtr;
-};
-typedef struct node NODE;
-typedef NODE *NODEPTR;
-
-NODEPTR headNode, tailNode;
+    
 };
 #endif /* LIST_H */
