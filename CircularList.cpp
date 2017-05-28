@@ -68,6 +68,8 @@ void CircularList::updateList(char value, char newValue){
     tempPtr=headNode;
     if(headNode->data==value){
         headNode=newPtr;
+        headNode->nextPtr=tempPtr->nextPtr;
+        tempPtr->nextPtr->prevPtr=headNode;
     }
     while(tempPtr !=NULL && tempPtr->data!=value){
         previousPtr=tempPtr;
