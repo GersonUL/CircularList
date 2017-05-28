@@ -68,8 +68,8 @@ void CircularList::updateList(char value, char newValue){
     tempPtr=headNode;
     if(headNode->data==value){
         headNode=newPtr;
-        headNode->nextPtr=tempPtr->nextPtr;
-        tempPtr->nextPtr->prevPtr=headNode;
+        headNode->nextPtr=tempPtr->nextPtr;//para que cuando se cambie la cabeza ésta no pierda el ->next
+        tempPtr->nextPtr->prevPtr=headNode;//para que cuando se cambie la cabeza ésta no pierda el ->prev
     }
     while(tempPtr !=NULL && tempPtr->data!=value){
         previousPtr=tempPtr;
@@ -77,7 +77,11 @@ void CircularList::updateList(char value, char newValue){
     }
     (tempPtr->prevPtr)->nextPtr=newPtr; 
     newPtr->nextPtr=tempPtr->nextPtr;
-    
+    if(tailNode->data==value){//si se actualiza la cola
+        tailNode->prevPtr->nextPtr=newPtr;
+        tailNode=newPtr;
+        
+    }
 }//upDateList
 void CircularList::insertIntoOrder(char value){
 //    NODEPTR newPtr,tempPtr, prevPtr;

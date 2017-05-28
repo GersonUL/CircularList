@@ -26,12 +26,12 @@ int main(int argc, char** argv) {
     myList.insertIntoTail('z');
     printf("lista original\n");
     myList.printList();
-    myList.updateList('c','X');
+    myList.updateList('z','X');
     myList.deleteToList('b');
     printf("\n");
     myList.printList();
     printf("\n");
-    printf("%c", myList.headNode->data);
+    printf("%c", myList.tailNode->prevPtr->data);
     
     return 0;
 }
