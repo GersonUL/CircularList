@@ -77,26 +77,21 @@ void CircularList::updateList(char value, char newValue){
     }
     (tempPtr->prevPtr)->nextPtr=newPtr; 
     newPtr->nextPtr=tempPtr->nextPtr;
-    if(tailNode->data==value){//si se actualiza la cola
-        tailNode->prevPtr->nextPtr=newPtr;
-        tailNode=newPtr;
-        
-    }
 }//upDateList
 void CircularList::insertIntoOrder(char value){
-//    NODEPTR newPtr,tempPtr, prevPtr;
-//    newPtr=(NODEPTR)malloc(sizeof(NODE));
-//    newPtr->data=value;
-//    tempPtr=headNode->nextPtr;
-//    while(tempPtr!=headNode && tempPtr->data!=value){
-//        if(newPtr->data> tempPtr->data){
-//            prevPtr->nextPtr=newPtr;
-//            newPtr->nextPtr=tempPtr;
-//        }
-//        prevPtr=tempPtr->nextPtr;
-//        tempPtr=tempPtr->nextPtr;
-//    }
-//    
+    NODEPTR newPtr,tempPtr, prevPtr;
+    newPtr=(NODEPTR)malloc(sizeof(NODE));
+    newPtr->data=value;
+    tempPtr=headNode;
+    if(value<headNode->data){
+        headNode=newPtr;
+        headNode->nextPtr=tempPtr;          
+        headNode->prevPtr=tempPtr->prevPtr;
+        tempPtr->prevPtr=headNode;
+        tempPtr->prevPtr=headNode;
+        headNode->prevPtr=tempPtr->prevPtr;
+        tempPtr->prevPtr->nextPtr=headNode;
+    }
 }//insertIntoOrder
 void CircularList::deleteToList(char value){
     NODEPTR tempPtr;   
@@ -117,18 +112,6 @@ void CircularList::deleteToList(char value){
                 tempPtr=NULL;
             }else{
                 tempPtr = tempPtr->nextPtr;
-//                if(tailNode->data==value){
-//                    tailNode->nextPtr->prevPtr=headNode;
-//                    tailNode->nextPtr->prevPtr=tailNode->prevPtr;
-//                    tailNode=tailNode->prevPtr;
-//                   
-//                }
-//                if(tempPtr == tailNode){
-//                    printf("Node do not exist.\n\n");
-//                    break;
-//                }                
-//                else{
-////                }//else                
             }//else
         }//while(tempPtr!=NULL)
     
