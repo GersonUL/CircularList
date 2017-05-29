@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
     printf("\n");
     myList.printList();
     printf("\n");
+    //prueba para punteros
     printf("%c", myList.tailNode->prevPtr->data);
     
     return 0;
