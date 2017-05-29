@@ -11,6 +11,7 @@
  * Created on 25 de mayo de 2017, 08:09 PM
  */
 #include "CircularList.h"
+#include "Files.h"
 #include <malloc.h>
 #include <stdlib.h>
 using namespace std;
@@ -20,6 +21,8 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     CircularList myList;
+    Files myFile;
+    myFile.readFile();
     myList.insertIntoHead('a');
     myList.insertIntoHead('b');
     myList.insertIntoHead('c');
