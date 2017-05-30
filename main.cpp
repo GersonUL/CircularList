@@ -22,7 +22,8 @@ using namespace std;
 int main(int argc, char** argv) {
     CircularList myList;
     Files myFile;
-    myFile.readFile();
+    
+    //Métodos de la lista
     myList.insertIntoHead('a');
     myList.insertIntoHead('b');
     myList.insertIntoHead('c');
@@ -36,6 +37,11 @@ int main(int argc, char** argv) {
     printf("\n");
     //prueba para punteros
     printf("%c", myList.tailNode->prevPtr->data);
+    
+    
+    //Métodos del archivo
+    myFile.readFile();
+    myFile.usingSplit();
     
     return 0;
 }

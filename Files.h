@@ -20,6 +20,7 @@ public:
     Files(const Files& orig);
     virtual ~Files();
     void readFile();
+    void usingSplit();
 private:
 
 };
